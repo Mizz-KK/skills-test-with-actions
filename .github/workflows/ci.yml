@@ -42,3 +42,5 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!### Fix
 
+      - name: Clear npm cache
+        run: npm cache clean --force
