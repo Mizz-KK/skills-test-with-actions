@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 on:
@@ -22,31 +20,25 @@ jobs:
         with:
           node-version: '16'
 
-      # Install remark linting tools
+          # Add a step to verify Node.js installation
+      - name: Verify Node.js installation
+        run: |
+          node --version
+          npm --version
+
+        # Install remark tools with additional debug information
       - name: Install remark linting tools
-        run: npm install remark-preset-lint-consistent
+        run: |
+          npm install remark-preset-lint-consistent --loglevel verbose
+      # Install all dependencies
+      - name: Install dependencies
+        run: npm install
 
       # Run markdown lint
       - name: Run markdown lint
-        run: npx remark -use remark-preset-lint-consistent -frail
+        run: npx remark . --use remark-preset-lint-consistent --frail
 
       # Example placeholder for other CI tasks
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo Hello, world!### Fix
 
-### Fix
-Update the workflow to include the following improvements:
-yaml
-jobs:
-  build:
-    runs```yaml
-# Add a step to verify Node.js installation
-- name: Verify Node.js installation
-  run: |
-    node --version
-    npm --version
-
-# Install remark tools with additional debug information
-- name: Install remark linting tools
-  run: |
-    npm install remark-preset-lint-consistent --loglevel verbose
