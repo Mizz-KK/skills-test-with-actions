@@ -20,27 +20,29 @@ jobs:
         with:
           node-version: '16'
 
-          # Add a step to verify Node.js installation
+      # Verify Node.js installation
       - name: Verify Node.js installation
         run: |
           node --version
           npm --version
 
-        # Install remark tools with additional debug information
-      - name: Install remark linting tools
+      # Install remark-cli and linting tools globally
+      - name: Install remark tools globally
         run: |
-          npm install remark-preset-lint-consistent --loglevel verbose
-      # Install all dependencies
+          npm install -g remark-cli remark-preset-lint-consistent
+
+      # Install all other dependencies
       - name: Install dependencies
         run: npm install
 
       # Run markdown lint
       - name: Run markdown lint
-        run: npx remark . --use remark-preset-lint-consistent --frail
+        run: remark . --use remark-preset-lint-consistent --frail
 
       # Example placeholder for other CI tasks
       - name: Run a one-line script
-        run: echo Hello, world!### Fix
+        run: echo Hello, world!
 
+      # Clear npm cache
       - name: Clear npm cache
         run: npm cache clean --force
