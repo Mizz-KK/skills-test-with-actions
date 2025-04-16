@@ -36,13 +36,13 @@ jobs:
 
       # Add a step to validate the configuration
       - name: Validate remark configuration
-        run: |
-          echo '{
-            "plugins": [
-              ["remark-lint-emphasis-marker", "*"]
-            ]
-          }' > .remarkrc
-
+         run:|
+   
+            echo '{
+            "plugins":[
+          ["remark-lint-emphasis-marker", "_"]
+              ]
+              }' > .remarkrc
       # Run markdown lint
       - name: Run markdown lint
         run: npx remark . --use remark-preset-lint-consistent --frail
