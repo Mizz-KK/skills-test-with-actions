@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v4
 
       # Set up Node.js
@@ -34,14 +35,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Add a step to validate the configuration
+      # Add a step to validate the configuration with corrected linting options
       - name: Validate remark configuration
-         run:|
-            echo '{
-            "plugins":[
-          ["remark-lint-emphasis-marker", "_"]
-              ]
-              }' > .remarkrc
+        run: |
+          echo '{
+            "plugins": [
+              ["remark-lint-emphasis-marker", "_"]
+            ]
+          }' > .remarkrc
+
       # Run markdown lint
       - name: Run markdown lint
         run: npx remark . --use remark-preset-lint-consistent --frail
