@@ -37,7 +37,6 @@ jobs:
       # Add a step to validate the configuration
       - name: Validate remark configuration
          run:|
-   
             echo '{
             "plugins":[
           ["remark-lint-emphasis-marker", "_"]
