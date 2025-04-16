@@ -44,6 +44,10 @@ jobs:
             ]
           }' > .remarkrc
 
+      # Automatically fix linting issues
+      - name: Fix markdown lint issues
+        run: npx remark . --use remark-preset-lint-consistent --output
+
       # Run markdown lint
       - name: Run markdown lint
         run: npx remark . --use remark-preset-lint-consistent --frail
